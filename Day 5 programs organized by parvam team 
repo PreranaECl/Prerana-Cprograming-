@@ -1,0 +1,384 @@
+1. Write a C Program to create a function to reverse a string and use a loop in the main program to reverse multiple strings entered by the user.
+
+#include<stdio.h>
+#include<string.h>
+void revstring(char str[])
+{
+int length;
+length=strlen(str);
+for(int i=0;i<length/2;i++)
+{
+char temp=str[i];
+str[i]=str[length-i-1];
+str[length-i-1]=temp;
+}
+}
+int main()
+{
+int n;
+char str[100];
+printf("Enter the number of strings: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+printf("Enter %d string: ",i+1);
+scanf("%s",str);
+revstring(str);
+printf("Reversal of string %d is %s: \n",i+1,str);
+}
+return 0;
+}
+
+2. Write a C Program to create a function to find the largest and smallest elements in an array, and use it in the main program to handle multiple arrays entered by the user.
+
+
+#include<stdio.h>
+#include<string.h>
+int max_min(int a[],int length,int *min,int *max)
+{
+*min=a[0];
+*max=a[0];
+for(int i=1;i<length;i++)
+{
+if(a[i]<*min)
+{
+*min=a[i];
+}
+if(a[i]>*max)
+{
+*max=a[i];
+}
+}
+}
+int main()
+{
+int n;
+printf("Enter the number of Arrays: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+int length;
+printf("Enter the number of elements in %d Array: ",i+1);
+scanf("%d",&length);
+int a[100];
+printf("Enter the elements of %d Array: ",i+1);
+for(int j=0;j<length;j++)
+{
+scanf("%d",&a[j]);
+}
+int max,min;
+max_min(a,length,&min,&max);
+printf("The Minimum element element of %d Array
+is %d.\n",i+1,min);
+printf("The Maximum element element of %d Array
+is %d.\n",i+1,max);
+printf("\n");
+}
+}
+
+
+3. Write a C Program to create a function to check if a string is a palindrome, and use a loop in the main program to check multiple strings entered by the user.
+
+
+#include<stdio.h>
+#include<string.h>
+int isPalindrome(char str[])
+{
+int length=strlen(str);
+for(int i=0;i<length/2;i++)
+{
+if(str[i]!=str[length-i-1])
+{
+return 0;
+}
+}
+return 1;
+}
+int main()
+{
+int n;
+printf("Enter the number of Strings: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+char str[100];
+printf("Enter %d String: ",i+1);
+scanf("%s",str);
+if (isPalindrome(str))
+{
+printf("The string %d : %s is a Palindrome.\n",i+1,str);}
+else{
+printf("The string %d : %s is not a Palindrome.\n",i+1,str);
+}
+}
+return 0;
+}
+
+
+
+
+4. Write a C Program to create a function to count the frequency of a character in a string, and use a loop to find the frequency of different characters in multiple strings.
+
+
+#include<stdio.h>
+#include<string.h>
+int countfrequency(char str[],char ch)
+{ int count=0;
+for(int i=0;i<strlen(str);i++)
+{
+if(ch==str[i])
+{
+count+=1;
+}
+}
+return count;
+}
+int main()
+{
+int n;
+printf("Enter the number of strings: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+char str[100];
+printf("Enter %d String: ",i+1);
+scanf("%s",str);
+char ch;
+printf("Enter the character to find it's frequency in
+string %d :",i+1);
+scanf(" %c",&ch);
+int frequency=countfrequency(str,ch);
+printf("The character '%c' appears %d times in string %d :
+\"%s\" .\n",ch,frequency,i+1,str);
+}
+return 0;
+}
+
+
+
+5. Write a C Program to create a function to concatenate two strings, and use it to merge a list of strings entered by the user into a single string using a loop.
+
+#include<stdio.h>
+#include<string.h>
+char concatenate(char str1[],char str2[])
+{
+int i=strlen(str1);
+for(int j=0;str2[j]!='\0';j++)
+{
+str1[i++]=str2[j];
+}
+str1[i]='\0';
+}
+int main()
+{
+int n;
+printf("Enter the number of Strings: ");
+scanf("%d",&n);
+char str1[1000]="";
+for(int i=0;i<n;i++)
+{
+char str2[100];
+printf("Enter the %d string: ",i+1);
+scanf("%s",str2);
+concatenate(str1,str2);
+}
+printf("The Merged String is %s.",str1);
+return 0;
+}
+
+
+
+6. Write a C Program to create a function to calculate the sum of an array, and use a loop in the main program to compute the sum for multiple arrays entered by the user.
+
+#include<stdio.h>
+#include<string.h>
+int sum(int a[],int length)
+{
+int sum=0;
+for(int i=0;i<length;i++)
+{
+sum+=a[i];
+}
+return sum;
+}
+int main()
+{
+int n;
+printf("Enter the number of Arrays: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+int num;
+printf("Enter the number of elements in %d Array: ",i+1);
+scanf("%d",&num);
+int a[num];
+printf("Enter %d elements in %d Array: ",num,i+1);
+for(int j=0;j<num;j++)
+{
+scanf("%d",&a[j]);
+}
+printf("The Sum of Elements in %d Array is %d.\n",i+1,sum(a,num));
+}
+return 0;
+}
+
+
+
+7. Write a C Program to create a function to check if an array is sorted, and use it in the main program to verify multiple arrays entered by the user.
+
+#include<stdio.h>
+int issort(int a[],int length)
+{
+for(int i=0;i<length-1;i++)
+{
+if(a[i]>a[i+1])
+{
+return 0;
+}
+}
+return 1;
+}
+int main()
+{
+int n;
+printf("Enter the number of Arrays: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+int num;
+printf("Enter the number of elements in %d Array: ",i+1);
+scanf("%d",&num);
+int a[num];
+printf("Enter %d elements in %d Array: ",num,i+1);
+for(int j=0;j<num;j++)
+{
+scanf("%d",&a[j]);
+}
+if(issort(a,num))
+printf("The Array %d is sorted.\n",i+1);
+else
+printf("The Array %d is unsorted.\n",i+1);
+}
+return 0;
+}
+
+
+8. Write a C Program to create a function to count the vowels in a string, and use a loop to count the vowels for multiple strings entered by the user.
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int countvowels(char str[])
+{
+int count=0;
+for(int i=0;str[i]!='\0';i++)
+{
+char ch= tolower(str[i]);
+if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
+{
+count+=1;
+}
+}
+return count;
+}
+int main()
+{
+int n;
+printf("Enter the number of Strings: ");
+scanf("%d",&n);
+for(int i=0;i<n;i++)
+{
+char str[100];
+printf("Enter %d String: ",i+1);
+scanf("%99s",str);
+int vowels=countvowels(str);
+printf("String %s consists of %d vowels.\n",str,vowels);
+}
+return 0;
+}
+
+
+9. Write a C Program to create a function to sort an array in ascending order, and use a loop to sort multiple arrays entered by the user.
+
+#include<stdio.h>
+void sort(int a[],int size)
+{
+for(int i=0;i<size;i++)
+{
+for(int j=0;j<size-i-1;j++)
+{
+if(a[j]>a[j+1])
+{
+int temp=a[j];
+a[j]=a[j+1];
+a[j+1]=temp;
+}
+}
+}
+}
+int main()
+{
+int n,size;
+printf("Enter the number of Arrays: ");
+scanf("%d",&n);
+for(int k=0;k<n;k++)
+{
+printf("Enter the size of %d Array: ",k+1);
+scanf("%d",&size);
+int a[size];
+printf("Enter %d elements in Array: ",size);
+for(int i=0;i<size;i++)
+{
+scanf("%d",&a[i]);
+}
+sort(a,size);
+printf("The Elements of the %d Array after sorting are : ",k+1);
+for(int j=0;j<size;j++)
+{
+printf("%d ",a[j]);
+}
+printf("\n");
+}
+return 0;
+}
+
+
+10. Write a C Program to create a function to find the maximum length among a list of strings, and use a loop to call the function for a series of strings entered by the user.
+
+#include<stdio.h>
+#include<string.h>
+int findMaxlength(char String[][100],int n)
+{
+int maxlength=0;
+for(int i=0;i<n;i++)
+{
+int length=strlen(String[i]);
+if(length>maxlength)
+{
+maxlength=length;
+}
+}
+return maxlength;
+}
+int main()
+{
+int numSets;
+printf("Enter the number of Sets of Strings: ");
+scanf("%d",&numSets);
+for(int set=0;set<numSets;set++)
+{
+int numString;
+printf("Enter the number of Strings in Set %d: ",set+1);
+scanf("%d",&numString);
+char String[numString][100];
+for(int i=0;i<numString;i++)
+{
+printf("Enter the %d String: ",i+1);
+scanf("%s",String[i]);
+}
+int maxlength=findMaxlength(String,numString);
+printf("The Maximum Length of the Strings in Set %d
+is : %d.\n",set+1,maxlength);
+}
+return 0;
+}
